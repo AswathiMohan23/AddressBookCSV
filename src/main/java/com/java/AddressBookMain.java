@@ -1,12 +1,14 @@
 package com.java;
 
 
+import java.io.IOException;
 import java.util.*;
 
 public class AddressBookMain {
     public static String ADDRESS_BOOK_FILE_NAME="addressBookFileName.txt";
 
     static AddressBookWriteToFile addressBookWriteToFile=new AddressBookWriteToFile();
+    static AddressBookJson addressBookJson=new AddressBookJson();
     static AddressBookCsv addressBookCsv=new AddressBookCsv();
     static int limit;
     static ArrayList<String> nameList = new ArrayList<>();
@@ -24,7 +26,7 @@ public class AddressBookMain {
     static Details person3 = new Details("Linda", "Thomas", "Kozhikode", "1564", "923456781");
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("\n======================================= Welcome to Address Book =========================================");
         System.out.println("\nchoose the option (1 or 2) which u need : " +
                 "\n\t\t\t1 : enter details from console\n\t\t\t2 : find a person by name\n\t\t\t" + "3 : delete details by using name\n");
@@ -53,6 +55,7 @@ public class AddressBookMain {
         addressBookCsv.writeDataToCSV(list);
         searching();
         sortingData();
+        addressBookJson.writingDataAsJson(list);
 
 
     }
